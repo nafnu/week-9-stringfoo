@@ -1,23 +1,44 @@
 package com.jetbrains;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.reflect.Array;
 
-public class Main {
+public class pin {
+
+    public static char type;
+    public static char[] arrayTxt1;
+    public static char[] arrayTxt2;
+    public static String[] encryptAccount;
 
     public static void main(String[] args) {
-	// write your code here
-        Scanner scanner = new Scanner(System.in);
+
+        Scanner kb = new Scanner(System.in);
+
         boolean continueLoop = true;
 
         do{
 
-            System.out.print("\nPlease enter your first name\t");
-            String name = scanner.next();
+            System.out.print("\nPlease enter the first name\t");
+            String name = kb.next() + kb.nextLine();
+            arrayTxt1 = name.toCharArray();
 
-            System.out.print("\nPlease enter your last name\t");
-            String surname = scanner.next();
-            continueLoop = false;
+            System.out.print("\nPlease enter the last name\t");
+            String surname = kb.next() + kb.nextLine();
+            arrayTxt2 = surname.toCharArray();
 
-        }while(continueLoop);
+
+            System.out.println("The account was created under:");
+            encryptAccount = new String[arrayTxt1.length];
+            type='E';
+            for (int i=0; i < arrayTxt1.length;i++)
+            {
+                encryptAccount[i] = String.valueOf(encrypt(arrayTxt1[i]));
+                System.out.print(encryptAccount[i]);
+                continueLoop = false;
+            }
+            System.out.println ();
+
+        }while (continueLoop);
    }
 
 
